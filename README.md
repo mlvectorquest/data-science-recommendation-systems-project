@@ -1,54 +1,50 @@
-# README Template
+# Recommendation Systems with IBM
 
-Below is a template provided for use when building your README file for students.
+Udacity Data Science project. It builds article recommenders for users of the IBM Watson Studio community, using real user-article interaction data.
 
-# Project Title
+## What the notebook does
 
-Project description goes here.
+`starter/Recommendations_with_IBM.ipynb` has five parts:
 
-## Getting Started
+1. **Exploratory data analysis**: users, articles and interactions.
+2. **Rank-based recommendations**: the most-read articles. Used for new users with no history.
+3. **User-user collaborative filtering**: recommend articles read by users with similar reading history.
+4. **Content-based recommendations**: TF-IDF and latent semantic analysis on article titles.
+5. **Matrix factorization**: SVD of the user-item matrix. The number of latent features (200) is chosen from the accuracy, precision and recall table and plot. Because those scores are measured on the same matrix the model was fitted to, they only show how well it reconstructs the data, so the notebook also explains why they can't be used to pick the number on their own.
 
-Instructions for how to get a copy of the project running on your local machine.
+## Getting started
 
-### Dependencies
-
-```
-Examples here
-```
-
-### Installation
-
-Step by step explanation of how to get a dev environment running.
-
-List out the steps
+Requires Python 3.13 (the version of the project's virtual environment).
 
 ```
-Give an example here
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+jupyter notebook starter/Recommendations_with_IBM.ipynb
 ```
 
-## Testing
+Run all cells from the top. The data is `starter/data/user-item-interactions.csv`.
 
-Explain the steps needed to run any automated tests
+## Tests
 
-### Break Down Tests
+`starter/project_tests.py` holds the checks the notebook calls after each exercise. They run inside the notebook and print whether your answer is correct.
 
-Explain what each test does and why
+## Exporting for submission
+
+The last notebook cell converts the saved notebook to HTML:
 
 ```
-Examples here
+python -m nbconvert --to html starter/Recommendations_with_IBM.ipynb
 ```
 
-## Project Instructions
+Save the notebook before running it, because it converts the file on disk. For PDF use `--to webpdf` (needs `pip install "nbconvert[webpdf]"` and `playwright install chromium`) or `--to pdf` (needs LaTeX and pandoc).
 
-This section should contain all the student deliverables for this project.
+## Built with
 
-## Built With
-
-* [Item1](www.item1.com) - Description of item
-* [Item2](www.item2.com) - Description of item
-* [Item3](www.item3.com) - Description of item
-
-Include all items used to build project.
+* [pandas](https://pandas.pydata.org) and [NumPy](https://numpy.org): data handling
+* [scikit-learn](https://scikit-learn.org): TF-IDF, SVD and metrics
+* [Matplotlib](https://matplotlib.org): plots
+* [Jupyter](https://jupyter.org) and nbconvert: notebook and export
 
 ## License
 
